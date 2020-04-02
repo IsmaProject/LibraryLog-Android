@@ -1,2 +1,2 @@
-include ':app', ':librarytest'
+include ':app', ':librarytest', ':errorlibs'
 rootProject.name='LogAppTest'
