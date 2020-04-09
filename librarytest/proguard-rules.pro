@@ -20,10 +20,6 @@
 # hide the original source file name.
 #-renamesourcefileattribute SourceFile
 
--libraryjars libs/commons-codec.jar
--libraryjars libs/guava-r09.jar
--libraryjars libs/sqlcipher.jar
-
 -optimizationpasses 5
 -dontusemixedcaseclassnames
 -dontskipnonpubliclibraryclasses
