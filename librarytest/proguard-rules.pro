@@ -20,34 +20,67 @@
 # hide the original source file name.
 #-renamesourcefileattribute SourceFile
 
--injars       in.jar
--outjars      out.jar
--libraryjars  <java.home>/jmods/java.base.jmod(!**.jar;!module-info.class)
--printmapping out.map
+-libraryjars libs/commons-codec.jar
+-libraryjars libs/guava-r09.jar
+-libraryjars libs/sqlcipher.jar
 
--keep public class * {
-    public protected *;
+-optimizationpasses 5
+-dontusemixedcaseclassnames
+-dontskipnonpubliclibraryclasses
+-dontskipnonpubliclibraryclassmembers
+-dontpreverify
+-verbose
+-optimizations !code/simplification/arithmetic,!field/*,!class/merging/*,!code/allocation/variable
+
+-keep public class * extends android.app.Activity
+-keep public class * extends android.app.Application
+
+-dontwarn javax.annotation.**
+
+-dontwarn android.app.**
+-dontwarn android.support.**
+-dontwarn android.view.**
+-dontwarn android.widget.**
+
+-dontwarn com.google.common.primitives.**
+
+-dontwarn **CompatHoneycomb
+-dontwarn **CompatHoneycombMR2
+-dontwarn **CompatCreatorHoneycombMR2
+
+-keepclasseswithmembernames class * {
+ native <methods>;
 }
 
--keepparameternames
--renamesourcefileattribute SourceFile
--keepattributes Exceptions,InnerClasses,Signature,Deprecated,
-                SourceFile,LineNumberTable,*Annotation*,EnclosingMethod
-
--keepclasseswithmembernames,includedescriptorclasses class * {
-    native <methods>;
+-keepclasseswithmembers class * {
+ public <init>(android.content.Context, android.util.AttributeSet);
 }
 
--keepclassmembers,allowoptimization enum * {
-    public static **[] values();
-    public static ** valueOf(java.lang.String);
+-keepclasseswithmembers class * {
+ public <init>(android.content.Context, android.util.AttributeSet, int);
 }
 
--keepclassmembers class * implements java.io.Serializable {
-    static final long serialVersionUID;
-    private static final java.io.ObjectStreamField[] serialPersistentFields;
-    private void writeObject(java.io.ObjectOutputStream);
-    private void readObject(java.io.ObjectInputStream);
-    java.lang.Object writeReplace();
-    java.lang.Object readResolve();
+-keepclassmembers class * extends android.app.Activity {
+ public void *(android.view.View);
+}
+
+-keepclassmembers enum * {
+ public static **[] values();
+ public static ** valueOf(java.lang.String);
+}
+
+-keep class * implements android.os.Parcelable {
+ public static final android.os.Parcelable$Creator *;
+}
+
+-keepclassmembers class **.R$* {
+ public static <fields>;
+}
+
+-keep public class net.sqlcipher.** {
+ *;
+}
+
+-keep public class net.sqlcipher.database.** {
+ *;
 }

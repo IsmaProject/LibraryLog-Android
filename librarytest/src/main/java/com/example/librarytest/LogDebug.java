@@ -13,4 +13,12 @@ public class LogDebug {
     public static int add(int nombreUn, int nombreDeux){
         return nombreUn + nombreDeux;
     }
+
+    public static int rem(int nombreUn, int nombreDeux){
+        return nombreUn - nombreDeux;
+    }
+
+    public static String tell(String phrase){
+        return "vous avez ecrit " + phrase;
+    }
 }

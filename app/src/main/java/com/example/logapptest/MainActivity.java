@@ -13,6 +13,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         LogDebug.d("jcb");
-        //LogDebug.add(2,9);
+        LogDebug.add(2,9);
+        LogDebug.rem(1,1);
+        LogDebug.tell("chdjsbc");
     }
 }
